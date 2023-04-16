@@ -1,0 +1,74 @@
+body{
+    background: url(tijolo.jpg);
+}
+header {
+    padding: 20px
+}
+nav {
+    position: absolute;
+    top: 110px;
+    right:100px;
+}
+nav li {
+    display: inline;
+    margin: 0 0 0 15px;
+}
+nav a {
+    text-transform: uppercase;
+    color: #000000;
+    font-weight: bold;
+    font-size: 25px;
+    text-decoration: none;
+    font-family: fantasy;
+}
+nav a:hover{
+    color:rgb(184, 4, 4);
+    text-decoration: underline;
+}
+nav a:active{
+    color: white;
+}
+.midias {
+    width: 940px;
+    margin: 60px auto;
+    padding: 50px 0;
+}
+.midias li {
+    display:inline-block;
+    text-align: center;
+    width: 35%;
+    vertical-align: top;
+    margin: 0 1.5%;
+    padding: 20px 50px;
+    font-family: sans-serif;
+}
+.midias li:hover {
+    text.color:rgb(184, 4, 4);
+}
+.midias li:active{
+    font.color: #088c19;
+}
+.midias h2 {
+    font-size: 30px;
+    font-weight: bold;
+    font-family: sans-serif;
+    padding: 20px;
+}
+.midias li:hover h2{
+    font-size: 34px;
+}
+.contato-descricao {
+    font-size: 18px;
+    font-family: sans-serif;
+}
+footer{
+    text-align: center;
+    background: url(fd.jpg);
+    padding: 40px 0;
+}
+.copyright {
+    color: white;
+    font-size: 13px;
+    margin: 20px 0 0;
+    font-family: sans-serif;
+}
