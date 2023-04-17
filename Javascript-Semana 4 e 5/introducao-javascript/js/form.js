@@ -2,26 +2,41 @@ var botaoAdicionar = document.querySelector("#adicionar-paciente");
 botaoAdicionar.addEventListener("click", function(event){
     event.preventDefault();
 
-    var form = document.querySelector("#form-adiciona")
-    
+    var form = document.querySelector("#form-adiciona") 
     var paciente = obtemPacienteDoFormulario(form);
     
-    var pacienteTr = montaTr(paciente);
-
-    var erro = validaPaciente(paciente);
-   
-    if(erro.length > 0){
-        var mensagemErro = document.querySelector("#mensagem-erro");
-        mensagemErro.textContent = erro;
+    var erros = validaPaciente(paciente);
+    console.log(erros);
+    if(erros.length > 0){
+        exibeMensagensDeErro(erros);
         return;
     }
 
-    var tabela = document.querySelector("#tabela-pacientes");
-    tabela.appendChild(pacienteTr);
+    adicionaPacienteNaTabela(paciente);
    
     form.reset();
  
+    var mensagensErro = document.querySelector("#mensagens-erro");
+    mensagensErro.innerHTML = ""; 
+      
 });
+
+function adicionaPacienteNaTabela (paciente){
+    var pacienteTr = montaTr(paciente);
+    var tabela = document.querySelector("#tabela-pacientes");
+    tabela.appendChild(pacienteTr);
+}
+
+function exibeMensagensDeErro(erros){
+    var ul = document.querySelector("#mensagens-erro");
+    ul.innerHTML = "";
+
+    erros.forEach(function(erro){
+        var li = document.createElement("li");
+        li.textContent = erro;
+        ul.appendChild(li);
+    });
+}
 
 function obtemPacienteDoFormulario(form){
 
@@ -64,10 +79,27 @@ function montaTd(dado,classe){
 function validaPaciente(paciente){
     var erros = [];
 
-    if (validaPeso(paciente.peso)) {
-
-    }else{
-        erros.push("O peso é inválido")
-        return "O peso é inválido";
+    if (paciente.nome.length == 0){
+        erros.push("Falta colocar o nome!");
     }
+
+    if (!validaPeso(paciente.peso)) {
+        erros.push("Peso é inválido!");
+    }
+    if (!validaAltura(paciente.altura)){
+        erros.push("Altura é inválida!");
+    }
+
+    if (paciente.gordura.length == 0){
+        erros.push("Falta percentual de gordura!")
+    }
+    if (paciente.peso.length == 0){
+        erros.push("Faltou adicionar o peso!")
+    }
+
+    if (paciente.altura.length == 0){
+        erros.push("Faltou adicionar a altura!")
+    }
+
+    return erros;
 }
