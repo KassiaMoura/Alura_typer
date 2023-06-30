@@ -1,6 +1,11 @@
 .campo-digitacao {
     font-size: 20px;
     height: 130px;
+    font-family: Courier;
+    font-weight: bold;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 8px;
 }
 
 .frase {
